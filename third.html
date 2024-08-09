@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .line_through {
+      text-decoration: line-through;
+    }
+
+    .ms_15 {
+      margin-left: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" name="" id="input_field">
+  <button id="save_btn" type="button">save</button>
+  <div id="data_div"></div>
+
+  <script>
+    save_btn.addEventListener("click", () => {
+      const input_data = document.getElementById("input_field")
+      const save_btn = document.getElementById("save_btn")
+      const data_div = document.getElementById("data_div")
+      const delete_div = document.createElement("div")
+      const heading = document.createElement("h1")
+      const line_through_btn = document.createElement("button")
+      const delete_btn = document.createElement("button")
+      line_through_btn.textContent = "line through"
+      delete_btn.textContent = "delete"
+      delete_btn.classList.add("ms_15")
+      if (input_data.value) {
+        heading.append(input_data.value)
+        delete_div.append(heading, line_through_btn, delete_btn)
+        data_div.append(delete_div)
+        input_data.value = ""
+      }
+      line_through_btn.addEventListener("click", () => {
+        heading.classList.toggle("line_through")
+
+      })
+      delete_btn.addEventListener("click", () => {
+        delete_div.remove()
+      })
+
+
+
+    })
+  </script>
+</body>
+
+</html>
